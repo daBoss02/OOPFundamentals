@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab1
 {
-    internal class Product
+    public class Product
     {
         private string _name;
         public string Name
@@ -16,7 +16,7 @@ namespace Lab1
             {
                 if (value.Length > 1)
                 {
-                    _name = value;
+                    _name = value.Trim();
                 } else
                 {
                     throw new Exception("Length must be greater than 1");
@@ -33,9 +33,16 @@ namespace Lab1
             }
         }
         private string _code;
-         public Product(string code)
+
+        public string Code
+        {
+            get { return _code; }
+        }
+         public Product(string code, string name, int price)
         {
             _code = code;
+            Name = name;
+            Price = price;
         }
     }
 }
