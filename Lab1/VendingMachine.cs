@@ -113,6 +113,7 @@ namespace Lab1
             if (change == 0) { Console.WriteLine("There is no change"); }
             else
             {
+                Console.WriteLine($"You have been given {item.Name} for {item.Price}");
                 Console.WriteLine($"You are owed ${change}");
                 foreach (KeyValuePair<int, int> coin in _moneyFloat)
                 {
@@ -132,13 +133,12 @@ namespace Lab1
                     Console.WriteLine("Error: Insufficient change");
                 }
                 else
-                {
+                { 
                     foreach (KeyValuePair<int, int> coin in owed)
                     {
                         Console.WriteLine($"${coin.Key}: {coin.Value}");
                     }
                 }
-
             }
         }
 
