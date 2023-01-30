@@ -8,6 +8,8 @@ namespace Lab3
 {
     public class Course
     {
+
+        public static int _courseIdCounter = 100;
         private int _courseId;
         // readonly -- only define at start
         public int CourseId { get { return _courseId; } }
@@ -53,26 +55,14 @@ namespace Lab3
             }
         }
 
-        // one course contains many students
-        private HashSet<Student> _students = new HashSet<Student>();
-        // get method exposes entire collection -- make specific methods instead
-        public Student? GetStudentInCourse(int studentId)
-        {
-            foreach (Student s in _students)
-            {
-                if (s.StudentId == studentId)
-                {
-                    return s;
-                }
-            }
-
-            return null;
-        }
-
         public HashSet<Enrolment> _enrolments= new HashSet<Enrolment>();
         public void AddEnrolment(Enrolment enrolment)
         {
             _enrolments.Add(enrolment);
+        }
+        public void RemoveEnrolment(Enrolment enrolment)
+        {
+            _enrolments.Remove(enrolment);
         }
         public HashSet<Enrolment> GetEnrolments()
         {
@@ -80,27 +70,12 @@ namespace Lab3
             return setCopy;
         }
 
-        public void AddStudentToCourse(Student student)
+        public Course(string title)
         {
-            if (_students.Count < Capacity)
-            {
-                _students.Add(student);
-            }
-            else
-            {
-                throw new Exception($"Course is at enrolment capacity {Capacity}");
-            }
-        }
-        public void RemoveStudentFromCourse(Student student)
-        {
-            _students.Remove(student);
-        }
-
-        public Course(int courseId, string title, int capacity)
-        {
-            _setCourseId(courseId);
+            _setCourseId(_courseIdCounter);
+            _courseIdCounter += 10;
             _setTitle(title);
-            _setCapacity(capacity);
+            _setCapacity(25);
         }
     }
 }

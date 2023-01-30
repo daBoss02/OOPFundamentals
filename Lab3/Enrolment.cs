@@ -8,6 +8,7 @@ namespace Lab3
 {
     public class Enrolment
     {
+        private static int _enrolmentIdCounter = 1;
         private int _id;
         public int Id { get { return _id; } }
 
@@ -36,9 +37,10 @@ namespace Lab3
         private DateTime _enrolmentDate;
         public DateTime EnrolmentDate { get { return _enrolmentDate; } }
 
-        public Enrolment(int id, Course course, Student student)
+        public Enrolment(Student student, Course course)
         {
-            _id = id;
+            _id = _enrolmentIdCounter;
+            _enrolmentIdCounter++;
             _student = student;
             _course = course;
 
