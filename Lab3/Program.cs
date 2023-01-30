@@ -1,38 +1,9 @@
-﻿// Create a system in which Students can register for Courses
-// A student may only take one Course, where a Course can have many students
-
-// Student Class
-// Course Class
-
-// one-to-many relationship
-using Lab3;
+﻿using Lab3;
 using System.ComponentModel.DataAnnotations;
-
-Course Software = new Course("Software Developer");
-Student Jimmy = new Student("Jimmy");
 
 HashSet<Enrolment> enrolments = new HashSet<Enrolment>();
 HashSet<Student> students = new HashSet<Student>();
 HashSet<Course> courses = new HashSet<Course>();
-
-// a course can have many students in it
-// and a student can take one course
-// one-to-many relationship (one course, many students)
-
-// "one" component needs a collection of the many (course needs a collection of students)
-// "many" component needs a property for the "one" (student needs a property of Course)
-
-// something outside of the objects creating the relationship between them
-
-try
-{
-    RegisterStudent(Jimmy, Software);
-    //DeregisterStudent(Jimmy, Software);
-    //Console.WriteLine(Jimmy.Course.Title);
-} catch (Exception ex)
-{
-    Console.WriteLine(ex.Message.ToString());
-}
 
 Console.WriteLine("Who would you like to register?");
 Console.Write("Name: ");
